@@ -12,9 +12,9 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45, false), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45, false, target)
 {
-    
+    std::srand(std::time(0));
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
@@ -22,32 +22,10 @@ RobotomyRequestForm::~RobotomyRequestForm()
     
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor)
+void RobotomyRequestForm::action() const
 {
-    if (this->GetIsIsgned() == false)
-        this->NotSignedException();
-    if (executor.GetGrade() > this->GetExecGrade())
-        this->GradeTooLowException();
-    this->action();
-}
-
-void RobotomyRequestForm::action()
-{
-    std::string filename = this->target + "_shrubbery";
-    std::ofstream outfile(filename.c_str());
-    if(!outfile.is_open())
-    {
-        std::cerr << "garbanzo\n";
-        return ;
-    }
-    outfile << "     *     \n"
-            << "    ***    \n"
-            << "   *****   \n"
-            << "  *******  \n"
-            << " ********* \n"
-            << "***********\n"
-            << "     *     \n"
-            << "     *     \n"
-            << "     *     \n";
-    outfile.close();
+    if(std::rand() % 2 == 0)
+        std::cout << this->target << " has been robotomized" << std::endl;
+    else    
+        std::cout << "robotomy failed" << std::endl;
 }

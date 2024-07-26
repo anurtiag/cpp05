@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
+#    By: anurtiag <anurtiag@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/17 13:06:03 by kali              #+#    #+#              #
-#    Updated: 2024/07/23 05:34:33 by kali             ###   ########.fr        #
+#    Updated: 2024/07/26 12:35:40 by anurtiag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	phonebook
 
 
-SRCS			=	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRCS			=	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 
 OBJ				=	$(SRCS:.cpp=.o)

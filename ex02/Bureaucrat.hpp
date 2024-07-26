@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anurtiag <anurtiag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:06:10 by kali              #+#    #+#             */
-/*   Updated: 2024/07/23 05:33:44 by kali             ###   ########.fr       */
+/*   Updated: 2024/07/26 09:33:47 by anurtiag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class Bureaucrat
         void GradeTooLowException();
         void VeryfyGrade();
         void signForm(AForm& Form);
+        void executeForm(AForm const & form);
 };
 
 std::ostream& operator<<(std::ostream& output, Bureaucrat& obj);

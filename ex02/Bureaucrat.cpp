@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anurtiag <anurtiag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:06:14 by kali              #+#    #+#             */
-/*   Updated: 2024/07/23 05:33:51 by kali             ###   ########.fr       */
+/*   Updated: 2024/07/26 09:52:45 by anurtiag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ void Bureaucrat::signForm(AForm& form)
         std::cerr << this->name << " couldn´t sign " << form.GetName() << " because " << e.what() << '\n';
     }
     
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+    form.execute(*this);
 }
 
 std::ostream& operator<<(std::ostream& output, Bureaucrat& obj)

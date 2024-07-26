@@ -3,114 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anurtiag <anurtiag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:06:06 by kali              #+#    #+#             */
-/*   Updated: 2024/07/23 06:11:10 by kali             ###   ########.fr       */
+/*   Updated: 2024/07/26 12:56:10 by anurtiag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-// void    validOperations()
-// {
-//     std::cout << "\n\n\nvalid operations\n\n\n";
-//     try
-//     {
-//         {
-//             Bureaucrat a("chickpea", 42);
-//             std::cout << a;
-//             a.DecrementGrade(5);
-//             std::cout << a;
-//             a.IncrementGrade(10);
-//             std::cout << a;
-//         }
-//         {
-//             Bureaucrat b;
-//             std::cout << b;
-//             b.DecrementGrade(10);
-//             std::cout << b;
-//             b.IncrementGrade(5);
-//             std::cout << b;
-//         }
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
-// }
+void sign_n_execute(Bureaucrat& b, AForm* form, int control)
+{
+    try
+    {
+        b.signForm(*form);
+        if(control == 0)
+        {
+            for(int i = 0; i < 10; i++)
+                form->action();
+        }
+        else
+            form->action();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+}
 
-// void    invalidConstructor()
-// {
-//     std::cout << "\n\n\ninvalid constructor\n\n\n";
-//     try
-//     {
-//         Bureaucrat a("chickpea", -5);
-//         std::cout << a;
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
-//     try
-//     {
-//         Bureaucrat b("potato", 500);
-//         std::cout << b;
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
-// }
-
-// void    invalidOperations()
-// {
-//     std::cout << "\n\n\ninvalid operations\n\n\n";
-//     try
-//     {
-//         Bureaucrat a;
-//         std::cout << a;
-//         a.IncrementGrade(5);
-//         std::cout << a;
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
-//     try
-//     {
-//         Bureaucrat b("chickpea", 150);
-//         std::cout << b;
-//         b.DecrementGrade(50);
-//         std::cout << b;
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
-// }
-
-// void sign()
-// {
-//     std::cout << "\n\n\nsign\n\n\n";
-//     Form f;
-//     Bureaucrat a;
-//     std::cout << a << f;
-//     a.signForm(f);
-//     std::cout << a << f;
-//     Form form("chickpea", 42, 42);
-//     Bureaucrat b("potato", 77);
-//     b.signForm(form);
-// }
+void tests(AForm *form, int control)
+{
+{
+    std::cout << "\n\n\nTest1\n\n\n";
+    Bureaucrat b("bureau", 1);
+    sign_n_execute(b, form, control);
+}
+{
+    std::cout << "\n\n\nTest2\n\n\n";
+    Bureaucrat b("bureau", 150);
+    sign_n_execute(b, form, control);
+}
+{
+    std::cout << "\n\n\nTest3\n\n\n";
+    Bureaucrat b("bureau", 60);
+    sign_n_execute(b, form, control);
+}
+}
 
 int main()
 {
-    // validOperations();
-    // invalidConstructor();
-    // invalidOperations();
-    // sign();
-    ShrubberyCreationForm a("chickpea");
-    a.action();
+    RobotomyRequestForm a("potato");
+    PresidentialPardonForm b("chickpea");
+    ShrubberyCreationForm c("sweet potato");
+    std::cout << "\n\n\nRobotomyRequestForm\n\n\n";
+    tests(&a, 0);
+    std::cout << "\n\n\nPresidentialPardonForm\n\n\n";
+    tests(&b, 1);
+    std::cout << "\n\n\nShrubberyCreationForm\n\n\n";
+    tests(&c, 1);
     return(0);
 }

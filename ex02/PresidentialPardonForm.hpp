@@ -18,12 +18,12 @@
 class PresidentialPardonForm : public AForm
 {
     private:
-        std::string target;
+    
     public:
         PresidentialPardonForm(std::string target);
         ~PresidentialPardonForm();
         void execute(Bureaucrat const & execute);
-        void action();
+        void action() const;
 };
 
 #endif

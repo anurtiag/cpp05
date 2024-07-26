@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AAFORM_HPP
-# define AAFORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -29,12 +29,13 @@ class AForm
 {
     private:
         const std::string name;
+        std::string target;
         const int signGrade;
         const int execGrade;
         bool isSigned;
     public:
         AForm();
-        AForm(const std::string name, const int signGrade, const int execGrade, bool isSigned);
+        AForm(const std::string name, const int signGrade, const int execGrade, bool isSigned, std::string target);
         AForm(const AForm& source);
         AForm& operator=(const AForm& source);
         virtual ~AForm();
@@ -42,13 +43,13 @@ class AForm
         int GetExecGrade() const;
         bool GetIsIsgned() const;
         std::string GetName() const;
-        void GradeTooHighException();
-        void GradeTooLowException();
-        void NotSignedException();
+        void GradeTooHighException() const;
+        void GradeTooLowException() const;
+        void NotSignedException() const;
         void VeryfyAForm();
         void beSigned(Bureaucrat& obj);
-        virtual void execute(Bureaucrat const & executor) = 0;
-        virtual void action() = 0;
+        virtual void action() const = 0;
+        void execute(Bureaucrat const & executor) const;
 };
 
 std::ostream& operator<<(std::ostream& output, AForm& obj);
