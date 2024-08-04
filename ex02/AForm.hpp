@@ -29,10 +29,10 @@ class AForm
 {
     private:
         const std::string name;
-        std::string target;
         const int signGrade;
         const int execGrade;
         bool isSigned;
+        std::string target;
     public:
         AForm();
         AForm(const std::string name, const int signGrade, const int execGrade, bool isSigned, std::string target);
